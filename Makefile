@@ -16,7 +16,7 @@ i686:
 	rm -rf ./mingw32
 
 x86_64:
-	mkdir output/x86_64
+	mkdir -p output/x86_64
 	cp debug-*.bat output/x86_64
 	sed -i "s|your-app-name.exe|$(EXE_NAME)|g" output/x86_64/debug-*.bat
 	wget https://sourceforge.net/projects/mingw-w64/files/External%20binary%20packages%20%28Win64%20hosted%29/gdb/x86_64-w64-mingw32-gdb-7.1.90.20100730.zip
