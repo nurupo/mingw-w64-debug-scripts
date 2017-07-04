@@ -26,7 +26,7 @@
 @echo off
 
 set app=your-app-name.exe
-set config=.debug-interactive
+set config=.debug-manual
 
 for /f "tokens=2 delims==" %%a in ('wmic OS Get localdatetime /value') do set tmp=%%a
 set timestamp=%tmp:~0,14%
