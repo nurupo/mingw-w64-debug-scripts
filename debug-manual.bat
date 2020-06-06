@@ -34,14 +34,14 @@ set timestamp=%tmp:~0,14%
 if not exist debug-logs (mkdir debug-logs)
 set logfile=debug-logs\%timestamp%.txt
 
-echo set trace-commands on > gdb\%config%
-echo set logging file %logfile% >> gdb\%config%
-echo set logging on >> gdb\%config%
-echo target exec %app% >> gdb\%config%
-echo file %app% >> gdb\%config%
+echo set trace-commands on > %config%
+echo set logging file %logfile% >> %config%
+echo set logging on >> %config%
+echo target exec %app% >> %config%
+echo file %app% >> %config%
 
-gdb\gdb.exe -x gdb\%config%
+gdb.exe -x %config%
 
 explorer.exe %logfile%
 
-del gdb\%config%
+del %config%

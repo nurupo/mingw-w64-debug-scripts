@@ -43,23 +43,23 @@ set timestamp=%tmp:~0,14%
 if not exist debug-logs (mkdir debug-logs)
 set logfile=debug-logs\%timestamp%.txt
 
-echo set trace-commands on > gdb\%config%
-echo target exec %app% >> gdb\%config%
-echo file %app% >> gdb\%config%
+echo set trace-commands on > %config%
+echo target exec %app% >> %config%
+echo file %app% >> %config%
 :: on crash, gdb sets $_exitcode to something (we assume that it's something different
 :: from -999)
-echo set $_exitcode = -999 >> gdb\%config%
-echo r >> gdb\%config%
+echo set $_exitcode = -999 >> %config%
+echo r >> %config%
 :: check if we crashed
-echo if $_exitcode != -999 >> gdb\%config%
-echo     quit 0 >> gdb\%config%
-echo else >> gdb\%config%
-echo     bt >> gdb\%config%
-echo     quit 75391 >> gdb\%config%
-echo end >> gdb\%config%
+echo if $_exitcode != -999 >> %config%
+echo     quit 0 >> %config%
+echo else >> %config%
+echo     bt >> %config%
+echo     quit 75391 >> %config%
+echo end >> %config%
 
-gdb\gdb.exe -x gdb\%config% > %logfile% 2>&1
+gdb.exe -x %config% > %logfile% 2>&1
 
 if %ERRORLEVEL% EQU 75391 explorer.exe %logfile%
 
-del gdb\%config%
+del %config%
